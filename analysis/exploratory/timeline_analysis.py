@@ -3,23 +3,23 @@ Timeline Analysis Based on Historical Data
 Create monthly analysis based on timeline.csv, comparing NIR method and model prediction method
 """
 
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import torch
 import os
 import sys
 from pathlib import Path
 
-# Add src directory to path for psco package
-project_root = Path(__file__).parent.parent.parent
-sys.path.insert(0, str(project_root / "src"))
-sys.path.insert(0, str(project_root / "analysis" / "nir_comparison"))
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import torch
+
 from psco.model import create_model
 from psco.data_processor import DataProcessor
 from psco.config import Config
 from psco.trainer import load_model
-from nir_comparison.add_NIR_columns import add_shipping_info, nir_predict 
+
+# Import from sibling directory
+sys.path.insert(0, str(Path(__file__).parent.parent / "nir_comparison"))
+from nir_comparison.add_NIR_columns import add_shipping_info, nir_predict
 
 
 class TimelineAnalyzer:

@@ -4,25 +4,19 @@ Save results to outputs/predictions/ directory for further analysis
 """
 
 import os
-import sys
-import pandas as pd
-import torch
+import warnings
 from typing import Optional
 from datetime import datetime
-import warnings
 
-warnings.filterwarnings("ignore")
-
-# Add src directory to path for psco package
-current_dir = os.path.dirname(os.path.abspath(__file__))
-project_root = os.path.dirname(os.path.dirname(current_dir))
-src_dir = os.path.join(project_root, "src")
-sys.path.insert(0, src_dir)
+import pandas as pd
+import torch
 
 from psco.config import Config
 from psco.data_processor import DataProcessor
 from psco.model import create_model
 from psco.trainer import load_model
+
+warnings.filterwarnings("ignore")
 
 
 def load_psco_model_and_predict(
@@ -35,9 +29,11 @@ def load_psco_model_and_predict(
     """
     print("Loading PSCO model...")
 
+    config = Config()
+
     # Use latest model file if not specified
     if model_path is None:
-        models_dir = os.path.join(project_root, "models")
+        models_dir = config.paths.models_dir
         model_files = [
             f
             for f in os.listdir(models_dir)
@@ -49,7 +45,7 @@ def load_psco_model_and_predict(
             raise FileNotFoundError("PSCO model file not found")
 
     if processor_path is None:
-        models_dir = os.path.join(project_root, "models")
+        models_dir = config.paths.models_dir
         processor_files = [
             f
             for f in os.listdir(models_dir)

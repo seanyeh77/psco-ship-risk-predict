@@ -9,17 +9,13 @@ Includes comprehensive feature importance analysis using multiple methods:
 import os
 import sys
 import logging
-import numpy as np
-import torch
-import matplotlib.pyplot as plt
 from typing import Optional
 from datetime import datetime
 
-# Add src directory to path for psco package
-current_dir = os.path.dirname(os.path.abspath(__file__))
-parent_dir = os.path.dirname(current_dir)
-src_dir = os.path.join(parent_dir, "src")
-sys.path.insert(0, src_dir)
+import numpy as np
+import torch
+import matplotlib.pyplot as plt
+from sklearn.metrics import classification_report
 
 from psco.config import Config
 from psco.data_processor import DataProcessor
@@ -29,7 +25,6 @@ from psco.feature_importance import (
     analyze_feature_importance,
     compare_feature_importance_methods,
 )
-from sklearn.metrics import classification_report
 
 
 def setup_logging(config: Config):

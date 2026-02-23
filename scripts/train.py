@@ -5,17 +5,12 @@ Main training script for PSCO model
 import os
 import sys
 import logging
-from typing import Dict
-import torch
+from typing import Dict, Union
 from datetime import datetime
-from typing import Union
-import torch.nn as nn
 
-# Add src directory to path for psco package
-current_dir = os.path.dirname(os.path.abspath(__file__))
-parent_dir = os.path.dirname(current_dir)
-src_dir = os.path.join(parent_dir, "src")
-sys.path.insert(0, src_dir)
+import torch
+import torch.nn as nn
+from sklearn.metrics import classification_report
 
 from psco.config import Config
 from psco.data_processor import DataProcessor
@@ -26,7 +21,6 @@ from psco.trainer import (
     save_model,
     plot_confusion_matrix,
 )
-from sklearn.metrics import classification_report
 
 
 def setup_logging(config: Config):

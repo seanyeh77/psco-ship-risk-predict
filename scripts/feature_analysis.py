@@ -7,14 +7,10 @@ Run this to analyze feature importance without running the full testing pipeline
 import os
 import sys
 import logging
-import torch
-import numpy as np
 from datetime import datetime
 
-# Add parent directory to path for psco package
-current_dir = os.path.dirname(os.path.abspath(__file__))
-parent_dir = os.path.dirname(current_dir)
-sys.path.append(parent_dir)
+import torch
+import numpy as np
 
 from psco.config import Config
 from psco.data_processor import DataProcessor

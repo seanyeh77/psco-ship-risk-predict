@@ -4,32 +4,26 @@ Analyzes performance, risk distribution, and prediction consistency
 """
 
 import os
-import sys
+import warnings
+from typing import Optional
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import torch
-from typing import Optional
 from sklearn.metrics import (
     confusion_matrix,
     accuracy_score,
     precision_recall_fscore_support,
 )
-import warnings
-
-warnings.filterwarnings("ignore")
-
-# Add src directory to path for psco package
-current_dir = os.path.dirname(os.path.abspath(__file__))
-project_root = os.path.dirname(os.path.dirname(current_dir))
-src_dir = os.path.join(project_root, "src")
-sys.path.insert(0, src_dir)
 
 from psco.config import Config
 from psco.data_processor import DataProcessor
 from psco.model import create_model
 from psco.trainer import load_model
+
+warnings.filterwarnings("ignore")
 
 # # Set font for better display
 # plt.rcParams['font.sans-serif'] = ['Arial Unicode MS', 'SimHei']
@@ -46,9 +40,11 @@ def load_psco_model_and_predict(
     """
     print("Loading PSCO model...")
 
+    config = Config()
+
     # Use latest model file if not specified
     if model_path is None:
-        models_dir = os.path.join(project_root, "models")
+        models_dir = config.paths.models_dir
         model_files = [
             f
             for f in os.listdir(models_dir)
@@ -60,7 +56,7 @@ def load_psco_model_and_predict(
             raise FileNotFoundError("PSCO model file not found")
 
     if processor_path is None:
-        models_dir = os.path.join(project_root, "models")
+        models_dir = config.paths.models_dir
         processor_files = [
             f
             for f in os.listdir(models_dir)
@@ -147,9 +143,7 @@ def load_nir_predictions():
         raise
 
     # Load processed data
-    processed_data_path = os.path.join(
-        project_root, "data", "processed", "processed_data.csv"
-    )
+    processed_data_path = os.path.join("data", "processed", "processed_data.csv")
     if not os.path.exists(processed_data_path):
         raise FileNotFoundError(
             f"NIR processed data file not found: {processed_data_path}"

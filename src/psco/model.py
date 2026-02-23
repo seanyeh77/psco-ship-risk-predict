@@ -175,9 +175,7 @@ class ModelEnsemble(nn.Module):
         return mean_probs, std_probs
 
 
-def create_model(
-    config: Config
-) -> Union[PSCOModel, nn.DataParallel]:
+def create_model(config: Config) -> Union[PSCOModel, nn.DataParallel]:
     """
     Create model based on configuration
 
