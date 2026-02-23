@@ -1,0 +1,87 @@
+# Python
+.venv
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# Logs
+*.log
+logs/*.log
+
+# Model files (keep .gitkeep)
+models/*.pth
+models/*.pt
+models/*.pkl
+!models/.gitkeep
+
+# Output files (keep .gitkeep)
+outputs/predictions/*.csv
+outputs/predictions/*.json
+outputs/plots/*.png
+outputs/plots/*.jpg
+outputs/plots/*.pdf
+outputs/plots/*.csv
+outputs/reports/*
+!outputs/**/.gitkeep
+
+# Data files (keep .gitkeep, reference data, and specific processed files)
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+data/simulated/*.csv
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+.cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
