@@ -2,7 +2,7 @@
 
 A machine learning system for predicting vessel detention outcomes using historical inspection data.
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 psco/
@@ -51,49 +51,49 @@ psco/
 └── configs/               # Configuration files
 ```
 
-## 🚀 Quick Start
+## Quick Start
+
+### Prerequisites
+
+Before you begin, ensure you have uv installed on your system. uv is an extremely fast Python package installer and resolver.
 
 ### Installation
 
 1. Clone the repository:
 ```bash
-cd /path/to/psco
+git clone https://gitlab.seanyeh77.com/
 ```
 
-2. Create and activate a virtual environment:
+2. Install the package in editable mode with UV:
 ```bash
-python -m venv .venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+uv pip install -e .
 ```
 
-3. Install the package in editable mode:
-```bash
-pip install -e .
-```
+UV will automatically create and manage the virtual environment for you - no need to manually activate it!
 
 ### Usage
 
 #### Training a Model
 ```bash
-python scripts/train.py
+uv run python scripts/train.py
 ```
 
 #### Evaluating a Model
 ```bash
-python scripts/evaluate.py
+uv run python scripts/evaluate.py
 ```
 
 #### Generating Predictions
 ```bash
-python analysis/nir_comparison/generate_predictions.py
+uv run python analysis/nir_comparison/generate_predictions.py
 ```
 
 #### Analyzing Results
 ```bash
-python analysis/exploratory/analyze_predictions.py
+uv run python analysis/exploratory/analyze_predictions.py
 ```
 
-## 📊 Features
+## Features
 
 - **Neural Network Model**: Custom PyTorch-based model for detention prediction
 - **Feature Engineering**: Comprehensive data processing and feature extraction
@@ -101,7 +101,7 @@ python analysis/exploratory/analyze_predictions.py
 - **Timeline Analysis**: Temporal analysis of inspection and detention trends
 - **Feature Importance**: Multiple methods for analyzing feature importance
 
-## 🔧 Configuration
+## Configuration
 
 Model configuration is managed in `src/psco/config.py`. Key settings include:
 
@@ -110,11 +110,20 @@ Model configuration is managed in `src/psco/config.py`. Key settings include:
 - Data processing options
 - File paths and directories
 
-## 📝 Development
+## Development
 
 ### Running Tests
 ```bash
-pytest tests/
+uv run pytest tests/
+```
+
+### Code Quality
+```bash
+# Linting
+uv run ruff check
+
+# Formatting
+uv run ruff format
 ```
 
 ### Code Structure
@@ -123,7 +132,7 @@ pytest tests/
 - Analysis notebooks and scripts are in `analysis/`
 - Tests follow the source structure in `tests/`
 
-## 📈 Results
+## Results
 
 Model outputs are saved to:
 - Trained models: `models/`
@@ -131,21 +140,6 @@ Model outputs are saved to:
 - Visualizations: `outputs/plots/`
 - Logs: `logs/`
 
-## 📚 Documentation
+## Documentation
 
 Additional documentation can be found in the `docs/` directory.
-
-## 🤝 Contributing
-
-1. Create a feature branch
-2. Make your changes
-3. Run tests to ensure everything works
-4. Submit a pull request
-
-## 📄 License
-
-[Add your license information here]
-
-## 👥 Authors
-
-[Add author information here]
