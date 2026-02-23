@@ -71,6 +71,7 @@ data/simulated/*.csv
 *.bak
 *.swp
 .cache/
+.ruffle_cache/
 
 # OS
 .DS_Store
