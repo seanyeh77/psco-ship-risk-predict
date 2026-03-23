@@ -61,7 +61,7 @@ Before you begin, ensure you have uv installed on your system. uv is an extremel
 
 1. Clone the repository:
 ```bash
-git clone https://gitlab.seanyeh77.com/
+git clone https://github.com/seanyeh77/psco-ship-risk-predict.git
 ```
 
 2. Install the package in editable mode with UV:
